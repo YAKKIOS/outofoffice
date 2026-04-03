@@ -355,13 +355,20 @@ html, body {
 
 .notepad-pre {
   flex: 1;
-  padding: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  white-space: pre-wrap;
+  padding: 16px 8px;
+  font-family: var(--font);
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: normal;
   background: white;
   color: black;
   user-select: text;
+  text-align: center;
+}
+
+.notepad-pre a {
+  color: #0000cc;
+  text-decoration: underline;
 }
 
 .notepad-btn-row {
@@ -525,14 +532,21 @@ html, body {
   border-radius: 0;
 }
 
-/* Thumb: chunky rectangular raised plastic */
+/* Thumb: chunky rectangular raised plastic with center groove */
 .xp-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 11px;
-  height: 21px;
-  margin-top: -9px;
-  background: #d4d0c8;
+  width: 13px;
+  height: 22px;
+  margin-top: -10px;
+  /* Raised surface with a dark center notch column */
+  background: linear-gradient(
+    to right,
+    #d4d0c8 0px, #d4d0c8 5px,
+    #888880 5px, #888880 6px,
+    #fffffe 6px, #fffffe 7px,
+    #d4d0c8 7px, #d4d0c8 100%
+  );
   /* Outer raised bevel: bright white top/left, dark grey bottom/right */
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
@@ -549,9 +563,15 @@ html, body {
 .xp-range::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
-  width: 11px;
-  height: 21px;
-  background: #d4d0c8;
+  width: 13px;
+  height: 22px;
+  background: linear-gradient(
+    to right,
+    #d4d0c8 0px, #d4d0c8 5px,
+    #888880 5px, #888880 6px,
+    #fffffe 6px, #fffffe 7px,
+    #d4d0c8 7px, #d4d0c8 100%
+  );
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
   border-right: 2px solid #404040;
@@ -628,7 +648,7 @@ html, body {
 .xp-textarea {
   flex: 1;
   min-height: 120px;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font);
   font-size: 12px;
   padding: 6px;
   background: white;
