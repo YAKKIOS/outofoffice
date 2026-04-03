@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOO Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="desktop">
+
+  <!-- Desktop Icons (top right) -->
+  <div id="desktop-icons">
+    <div class="desktop-icon" id="icon-readme" ondblclick="openReadme()">
+      <div class="icon-img">
+        <div class="notepad-icon-img"></div>
+      </div>
+      <span>README.txt</span>
+    </div>
+    <div class="desktop-icon" id="icon-recycle" ondblclick="openRecycleBin()">
+      <div class="icon-img">
+        <div class="recycle-icon-img"></div>
+      </div>
+      <span>Recycle Bin</span>
+    </div>
+  </div>
+
+  <!-- README Window -->
+  <div class="xp-window" id="readme-window" style="left:20px;top:20px;width:320px;">
+    <div class="xp-titlebar active">
+      <div class="xp-titlebar-left">
+        <div class="titlebar-icon">📄</div>
+        <span class="titlebar-text">README.txt - Notepad</span>
+      </div>
+      <div class="xp-titlebar-btns">
+        <button class="xp-tb-btn xp-tb-min" data-win="readme-window" data-label="README.txt">&#8722;</button>
+        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">&#9633;</button>
+        <button class="xp-tb-btn xp-tb-close" data-win="readme-window">&#10005;</button>
+      </div>
+    </div>
+    <div class="xp-menubar-np">
+      <span class="np-menu-item">File</span>
+      <span class="np-menu-item">Edit</span>
+      <span class="np-menu-item">Format</span>
+      <span class="np-menu-item">View</span>
+      <span class="np-menu-item">Help</span>
+    </div>
+    <div class="xp-window-body notepad-body">
+      <pre class="notepad-pre">OOO Generator v1.0
+------------------
+A very serious tool for
+corporate correspondence.
+
+Made by jackjohnson.fyi
+
+Having a laugh?
+&#9749; Buy me a coffee</pre>
+      <div class="notepad-btn-row">
+        <button class="xp-btn" onclick="window.open('https://buymeacoffee.com/jackjohnson','_blank')">&#9749; Buy me a coffee</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main OOO Window -->
+  <div class="xp-window xp-resizable" id="ooo-window" style="width:560px;height:660px;">
+    <div class="xp-titlebar active">
+      <div class="xp-titlebar-left">
+        <div class="titlebar-icon">&#9993;</div>
+        <span class="titlebar-text">Out of Office Generator</span>
+      </div>
+      <div class="xp-titlebar-btns">
+        <button class="xp-tb-btn xp-tb-min" data-win="ooo-window" data-label="OOO Generator">&#8722;</button>
+        <button class="xp-tb-btn xp-tb-max" data-win="ooo-window">&#9633;</button>
+        <button class="xp-tb-btn xp-tb-close" data-action="ooo-close">&#10005;</button>
+      </div>
+    </div>
+
+    <!-- Menu Bar -->
+    <div class="xp-menubar" id="ooo-menubar">
+      <div class="xp-menu-root" data-menu="file">File
+        <div class="xp-dropdown" id="dd-file">
+          <div class="xp-dd-item" id="mi-new">New</div>
+          <div class="xp-dd-item" id="mi-print">Print</div>
+          <div class="xp-dd-sep"></div>
+          <div class="xp-dd-item" id="mi-exit">Exit</div>
+        </div>
+      </div>
+      <div class="xp-menu-root" data-menu="edit">Edit
+        <div class="xp-dropdown" id="dd-edit">
+          <div class="xp-dd-item" id="mi-selectall">Select All</div>
+          <div class="xp-dd-item" id="mi-clearfields">Clear fields</div>
+          <div class="xp-dd-sep"></div>
+          <div class="xp-dd-item xp-dd-disabled">Undo last career decision</div>
+        </div>
+      </div>
+      <div class="xp-menu-root" data-menu="drama">Drama
+        <div class="xp-dropdown" id="dd-drama">
+          <div class="xp-dd-item" id="mi-dramamax">Set to Maximum</div>
+          <div class="xp-dd-item" id="mi-dramamin">Set to Minimum</div>
+          <div class="xp-dd-item" id="mi-dramarand">Randomise</div>
+          <div class="xp-dd-sep"></div>
+          <div class="xp-dd-item xp-dd-disabled">Explain drama to IT department</div>
+        </div>
+      </div>
+      <div class="xp-menu-root" data-menu="help">Help
+        <div class="xp-dropdown" id="dd-help">
+          <div class="xp-dd-item" id="mi-about">About</div>
+          <div class="xp-dd-sep"></div>
+          <div class="xp-dd-item xp-dd-disabled">Contact support</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xp-window-body ooo-body" id="ooo-body">
+      <div class="form-section">
+
+        <div class="form-row">
+          <label class="xp-label">Away from</label>
+          <div class="date-row">
+            <input type="date" class="xp-input date-input" id="date-from">
+            <span class="date-sep">to</span>
+            <input type="date" class="xp-input date-input" id="date-to">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="xp-label">Reason for absence</label>
+          <input type="text" class="xp-input" id="reason" placeholder="e.g. Annual leave, hiking, questioning everything">
+        </div>
+
+        <div class="form-row">
+          <div class="drama-header-row">
+            <label class="xp-label">Drama level</label>
+            <span class="drama-value-badge" id="drama-value">5</span>
+          </div>
+          <div class="drama-end-labels">
+            <span>Professional</span>
+            <span>Unhinged</span>
+          </div>
+          <input type="range" class="xp-range" id="drama-slider" min="1" max="10" value="5">
+        </div>
+
+        <div class="form-btn-row">
+          <button class="xp-btn generate-btn" id="generate-btn">Generate correspondence</button>
+        </div>
+
+      </div>
+
+      <div class="output-section">
+        <textarea class="xp-textarea" id="ooo-output" placeholder="Your correspondence will appear here."></textarea>
+        <div class="output-btn-row hidden" id="copy-btn-row">
+          <button class="xp-btn copy-btn" id="copy-btn">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="xp-resize-handle" id="ooo-resize-handle"></div>
+  </div>
+
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <button id="start-btn" onclick="toggleStartMenu()">
+      <span class="win-logo">
+        <span class="wl-tl"></span>
+        <span class="wl-tr"></span>
+        <span class="wl-bl"></span>
+        <span class="wl-br"></span>
+      </span>
+      <em>start</em>
+    </button>
+    <div id="taskbar-sep"></div>
+    <div id="taskbar-items"></div>
+    <div id="system-tray">
+      <div id="tray-icons">
+        <span class="tray-icon" title="Volume">&#128266;</span>
+        <span class="tray-icon" title="Network">&#128246;</span>
+      </div>
+      <div id="clock">12:00</div>
+    </div>
+  </div>
+
+  <!-- Start Menu (hidden) -->
+  <div id="start-menu" class="hidden">
+    <div class="start-menu-top">
+      <div class="start-user-name">User</div>
+    </div>
+    <div class="start-menu-body">
+      <div class="start-menu-left">
+        <div class="start-menu-item" onclick="openReadme(); toggleStartMenu()">&#128196; README.txt</div>
+        <div class="start-menu-sep"></div>
+        <div class="start-menu-item" onclick="toggleStartMenu()">&#128187; My Computer</div>
+        <div class="start-menu-item" onclick="toggleStartMenu()">&#127968; My Documents</div>
+      </div>
+    </div>
+    <div class="start-menu-bottom">
+      <div class="start-menu-item-bottom" onclick="toggleStartMenu()">&#128274; Log Off</div>
+      <div class="start-menu-item-bottom" onclick="toggleStartMenu()">&#9210; Turn Off Computer</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
