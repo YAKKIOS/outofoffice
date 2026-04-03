@@ -490,72 +490,40 @@ html, body {
   --fill-pct: 44.4%;
 }
 
-/* Track: thin sunken groove with blue fill to the left of the thumb */
+/* Track: hairline, no fill or bevel */
 .xp-range::-webkit-slider-runnable-track {
-  height: 4px;
-  /* Blue fill left of thumb, grey groove to the right */
-  background: linear-gradient(
-    to right,
-    #316ac5 0%,
-    #316ac5 var(--fill-pct),
-    #a0a098 var(--fill-pct),
-    #a0a098 100%
-  );
-  /* Sunken bevel: dark top-left, light bottom-right */
-  border-top: 1px solid #707068;
-  border-left: 1px solid #707068;
-  border-right: 1px solid #dfdfd8;
-  border-bottom: 1px solid #dfdfd8;
-  box-shadow:
-    inset 1px 1px 0 #585850,
-    inset -1px -1px 0 #fffffe;
+  height: 2px;
+  background: #808080;
+  border: none;
+  box-shadow: none;
   border-radius: 0;
 }
 
 .xp-range::-moz-range-track {
-  height: 4px;
-  background: #a0a098;
-  border-top: 1px solid #707068;
-  border-left: 1px solid #707068;
-  border-right: 1px solid #dfdfd8;
-  border-bottom: 1px solid #dfdfd8;
-  box-shadow:
-    inset 1px 1px 0 #585850,
-    inset -1px -1px 0 #fffffe;
+  height: 2px;
+  background: #808080;
+  border: none;
+  box-shadow: none;
   border-radius: 0;
 }
 
-/* Firefox native progress fill */
 .xp-range::-moz-range-progress {
-  height: 4px;
-  background: #316ac5;
+  height: 2px;
+  background: #808080;
   border-radius: 0;
 }
 
-/* Thumb: chunky rectangular raised plastic with center groove */
+/* Thumb: downward-pointing arrow (pentagon), green XP style */
 .xp-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 13px;
-  height: 22px;
-  margin-top: -10px;
-  /* Raised surface with a dark center notch column */
-  background: linear-gradient(
-    to right,
-    #d4d0c8 0px, #d4d0c8 5px,
-    #888880 5px, #888880 6px,
-    #fffffe 6px, #fffffe 7px,
-    #d4d0c8 7px, #d4d0c8 100%
-  );
-  /* Outer raised bevel: bright white top/left, dark grey bottom/right */
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  /* Inner softer bevel for depth */
-  box-shadow:
-    inset 1px 1px 0 #ece8e0,
-    inset -1px -1px 0 #a8a49c;
+  width: 11px;
+  height: 20px;
+  margin-top: -9px;
+  background: linear-gradient(180deg, #f0faf0 0%, #b8e0b8 55%, #80c080 100%);
+  border: 1px solid #507850;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 62%, 50% 100%, 0% 62%);
   border-radius: 0;
   cursor: pointer;
 }
@@ -563,22 +531,12 @@ html, body {
 .xp-range::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
-  width: 13px;
-  height: 22px;
-  background: linear-gradient(
-    to right,
-    #d4d0c8 0px, #d4d0c8 5px,
-    #888880 5px, #888880 6px,
-    #fffffe 6px, #fffffe 7px,
-    #d4d0c8 7px, #d4d0c8 100%
-  );
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  box-shadow:
-    inset 1px 1px 0 #ece8e0,
-    inset -1px -1px 0 #a8a49c;
+  width: 11px;
+  height: 20px;
+  background: linear-gradient(180deg, #f0faf0 0%, #b8e0b8 55%, #80c080 100%);
+  border: 1px solid #507850;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.7);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 62%, 50% 100%, 0% 62%);
   border-radius: 0;
   cursor: pointer;
 }
@@ -592,18 +550,10 @@ html, body {
   font-size: 11px;
   cursor: pointer;
   padding: 4px 12px;
-  /* Raised surface: light at top, slightly darker at bottom */
-  background: linear-gradient(180deg, #f0ede8 0%, #e4e0d8 55%, #d8d4cc 100%);
-  /* Outer bevel: bright highlight top/left, dark shadow bottom/right */
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #707070;
-  border-bottom: 2px solid #707070;
-  /* Inner bevel: softer second layer */
-  box-shadow:
-    inset 1px 1px 0 #f8f6f0,
-    inset -1px -1px 0 #a8a49c;
-  border-radius: 2px;
+  background: #f0f0f0;
+  border: 1px solid #7f9db9;
+  box-shadow: none;
+  border-radius: 3px;
   color: #000000;
   outline: none;
   min-width: 75px;
@@ -613,27 +563,19 @@ html, body {
 }
 
 .xp-btn:hover {
-  background: linear-gradient(180deg, #f8f5f0 0%, #ece8e0 55%, #e0dcd4 100%);
+  background: #e8f0f8;
+  border-color: #6080a8;
 }
 
-/* Depressed state: invert the bevel so it looks physically pressed in */
 .xp-btn:active {
-  background: linear-gradient(180deg, #ccc8c0 0%, #d8d4cc 55%, #e0dcd4 100%);
-  border-top: 2px solid #707070;
-  border-left: 2px solid #707070;
-  border-right: 2px solid #f0ede8;
-  border-bottom: 2px solid #f0ede8;
-  box-shadow:
-    inset 1px 1px 0 #a8a49c,
-    inset -1px -1px 0 #f8f6f0;
-  /* Nudge text 1px down-right to sell the press */
+  background: #dce8f4;
+  border-color: #507090;
   padding-top: 5px;
   padding-left: 13px;
   padding-bottom: 3px;
   padding-right: 11px;
 }
 
-/* Focus ring using dotted inner outline, XP style */
 .xp-btn:focus-visible {
   outline: 1px dotted #000000;
   outline-offset: -4px;
