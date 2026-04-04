@@ -598,6 +598,7 @@ html, body {
   color: #000;
   width: 100%;
   user-select: text;
+  line-height: 150%;
 }
 
 .xp-textarea::placeholder {
