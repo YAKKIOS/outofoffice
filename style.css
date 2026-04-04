@@ -383,21 +383,40 @@ html, body {
   padding: 8px;
   gap: 6px;
   overflow: hidden;
+  background: #ece9d8;
 }
 
-.form-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* ===== XP GROUP BOX ===== */
+fieldset.xp-group-box {
+  border: 1px solid #aca899;
+  box-shadow: inset 1px 1px 0 #ffffff;
+  padding: 6px 8px 10px;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
   flex-shrink: 0;
+  min-width: 0;
 }
 
-.output-section {
-  display: flex;
-  flex-direction: column;
+fieldset.xp-group-box > legend {
+  color: #0057d0;
+  font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  padding: 0 4px;
+  margin-left: 6px;
+}
+
+fieldset.xp-group-box.output-group {
   flex: 1;
   min-height: 0;
-  gap: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset.xp-group-box.output-group .xp-textarea {
+  flex: 1;
+  min-height: 0;
 }
 
 /* ===== FORM ELEMENTS ===== */
@@ -409,26 +428,23 @@ html, body {
 
 .xp-label {
   font-size: 11px;
-  color: #000;
+  color: #0057d0;
 }
 
 .xp-input {
   font-family: var(--font);
   font-size: 11px;
-  padding: 3px 5px;
+  padding: 2px 4px;
   background: white;
-  border: 2px solid;
-  border-top-color: #7b96b0;
-  border-left-color: #7b96b0;
-  border-right-color: #f0f0f0;
-  border-bottom-color: #f0f0f0;
+  border: 1px solid;
+  border-color: #7f9db9 #dfdfdf #dfdfdf #7f9db9;
   outline: none;
   color: #000;
+  border-radius: 0;
 }
 
 .xp-input:focus {
-  border-top-color: #4a78c0;
-  border-left-color: #4a78c0;
+  border-color: #7f9db9;
 }
 
 .date-row {
@@ -446,32 +462,53 @@ html, body {
   color: #000;
 }
 
-/* ===== DRAMA SLIDER ===== */
-.drama-header-row {
+/* ===== DRAMA SLIDER ROW ===== */
+.drama-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
+}
+
+.drama-end-label {
+  font-family: var(--font);
+  font-size: 11px;
+  color: #000;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.drama-track-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .drama-value-badge {
   background: white;
-  border: 2px solid;
-  border-top-color: #7b96b0;
-  border-left-color: #7b96b0;
-  border-right-color: #f0f0f0;
-  border-bottom-color: #f0f0f0;
-  padding: 1px 8px;
+  border: 1px solid #7f9db9;
+  padding: 1px 6px;
   font-size: 11px;
-  min-width: 28px;
+  min-width: 24px;
   text-align: center;
+  flex-shrink: 0;
+  border-radius: 0;
 }
 
-.drama-end-labels {
+/* ===== SLIDER TICK MARKS ===== */
+.slider-ticks {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
-  color: #444;
-  margin-bottom: 2px;
+  padding: 0 5px;
+  margin-top: 2px;
+}
+
+.slider-tick {
+  display: block;
+  width: 1px;
+  height: 4px;
+  background: #909090;
+  flex-shrink: 0;
 }
 
 .xp-range {
@@ -583,16 +620,13 @@ html, body {
 /* ===== TEXTAREA ===== */
 .xp-textarea {
   flex: 1;
-  min-height: 120px;
+  min-height: 80px;
   font-family: var(--font);
-  font-size: 12px;
-  padding: 6px;
+  font-size: 11px;
+  padding: 4px 6px;
   background: white;
-  border: 2px solid;
-  border-top-color: #7b96b0;
-  border-left-color: #7b96b0;
-  border-right-color: #f0f0f0;
-  border-bottom-color: #f0f0f0;
+  border: 1px solid;
+  border-color: #7f9db9 #dfdfdf #dfdfdf #7f9db9;
   resize: none;
   outline: none;
   color: #000;
