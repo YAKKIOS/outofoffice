@@ -27,6 +27,8 @@ Never reveal which archetype you selected. Never use the person's name. Keep rep
 
 Keep all replies to 3-5 sentences maximum regardless of drama level. Brevity is funnier. The character should be fully expressed in those sentences, not exhaustively elaborated. Do not write long paragraphs.
 
+Never start the reply with Thank you for your email or any variation of it. Never start two replies the same way. Each archetype should have a distinctly different opening that immediately establishes the character voice — the Victorian aristocrat might open with an address, the medieval herald with a proclamation, the lawyer with a clause reference, the wellness influencer with a question. The opening line is the punchline setup, make it count.
+
 Return only the out of office reply text, nothing else.`;
 
 export async function onRequestPost(context) {
