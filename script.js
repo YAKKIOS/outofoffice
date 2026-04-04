@@ -191,7 +191,7 @@ document.addEventListener('click', e => {
 
   if (btn.classList.contains('xp-tb-close')) {
     if (action === 'ooo-close') {
-      showErrorDialog('OOO Generator', '&#10060; Cannot close. You are still employed.');
+      showErrorDialog('Out of Office Generator', '❌ Cannot close. You are still employed.');
       return;
     }
     if (winId) {
@@ -267,7 +267,7 @@ function menuPrint() {
 }
 
 function menuExit() {
-  showErrorDialog('Access Denied', '&#128274; Access denied. Please complete your timesheet first.');
+  showErrorDialog('Access Denied', '🔒 Access denied. Please complete your timesheet first.');
 }
 
 function menuSelectAll() {
@@ -331,7 +331,7 @@ async function generateOOO() {
   const drama = document.getElementById('drama-slider').value;
 
   if (!reason) {
-    showErrorDialog('Missing Information', '&#9888; Please enter a reason for absence.');
+    showErrorDialog('Missing Information', '⚠ Please enter a reason for absence.');
     return;
   }
 
@@ -365,7 +365,7 @@ async function generateOOO() {
     }
   } catch (err) {
     loadingDialog.remove();
-    showErrorDialog('Error', '&#10060; Failed to generate: ' + err.message);
+    showErrorDialog('Error', '❌ Failed to generate: ' + err.message);
   }
 }
 
@@ -428,9 +428,9 @@ function createBaseWindow(opts) {
         <span class="titlebar-text">${opts.title}</span>
       </div>
       <div class="xp-titlebar-btns">
-        ${opts.minimizable ? `<button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="${opts.label || opts.title}">&#8722;</button>` : ''}
-        ${opts.maximizable ? `<button class="xp-tb-btn xp-tb-max" data-win="${id}">&#9633;</button>` : ''}
-        <button class="xp-tb-btn xp-tb-close" ${closeAction ? `data-action="${closeAction}"` : ''} ${closeWin}>&#10005;</button>
+        ${opts.minimizable ? `<button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="${opts.label || opts.title}">−</button>` : ''}
+        ${opts.maximizable ? `<button class="xp-tb-btn xp-tb-max" data-win="${id}">□</button>` : ''}
+        <button class="xp-tb-btn xp-tb-close" ${closeAction ? `data-action="${closeAction}"` : ''} ${closeWin}>✕</button>
       </div>
     </div>
   `;
@@ -448,16 +448,16 @@ function showErrorDialog(title, message) {
   d.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#10060;</div>
+        <div class="titlebar-icon">❌</div>
         <span class="titlebar-text">${title}</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-close">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-close">✕</button>
       </div>
     </div>
     <div class="dialog-body">
       <div class="dialog-content">
-        <span class="dialog-icon">&#10060;</span>
+        <span class="dialog-icon">❌</span>
         <span class="dialog-message">${message}</span>
       </div>
       <div class="dialog-buttons">
@@ -485,7 +485,7 @@ function showInfoDialog(title, icon, message, buttons) {
         <span class="titlebar-text">${title}</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-close">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-close">✕</button>
       </div>
     </div>
     <div class="dialog-body" id="info-dialog-body">
@@ -521,11 +521,11 @@ function createLoadingDialog() {
   d.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#8987;</div>
+        <div class="titlebar-icon">⌛</div>
         <span class="titlebar-text">Please wait...</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-disabled">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-disabled">✕</button>
       </div>
     </div>
     <div class="dialog-body">
@@ -551,18 +551,18 @@ function createPrintDialog() {
   d.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#128438;</div>
+        <div class="titlebar-icon">🖶</div>
         <span class="titlebar-text">Print</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-disabled">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-disabled">✕</button>
       </div>
     </div>
     <div class="print-dialog-body">
       <div class="print-section">
         <div class="print-section-title">Select Printer</div>
         <div style="display:flex;align-items:center;gap:8px;padding:4px 0">
-          <span style="font-size:20px">&#128438;</span>
+          <span style="font-size:20px">🖶</span>
           <div>
             <div style="font-weight:bold">HP LaserJet 1020</div>
             <div style="font-size:10px;color:#888">Status: Offline · Documents waiting: 0</div>
@@ -603,7 +603,7 @@ function openReadme() {
   const win = document.getElementById('readme-window');
   win.style.display = 'flex';
   if (!taskbarItems['readme-window']) {
-    registerTaskbar('readme-window', 'README.txt', '&#128196;');
+    registerTaskbar('readme-window', 'README.txt', '📄');
   } else {
     taskbarItems['readme-window'].el.classList.remove('minimized');
   }
@@ -629,18 +629,18 @@ function openRecycleBin() {
   win.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#9851;</div>
+        <div class="titlebar-icon">♻</div>
         <span class="titlebar-text">Recycle Bin</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-min" data-win="recycle-window" data-label="Recycle Bin">&#8722;</button>
-        <button class="xp-tb-btn xp-tb-max" data-win="recycle-window">&#9633;</button>
-        <button class="xp-tb-btn xp-tb-close" data-win="recycle-window">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-min" data-win="recycle-window" data-label="Recycle Bin">−</button>
+        <button class="xp-tb-btn xp-tb-max" data-win="recycle-window">□</button>
+        <button class="xp-tb-btn xp-tb-close" data-win="recycle-window">✕</button>
       </div>
     </div>
     <div class="xp-window-body recycle-window-body" style="flex:1;display:flex;flex-direction:column;">
       <div class="recycle-toolbar">
-        <button class="xp-btn" id="empty-recycle-btn">&#128465; Empty Recycle Bin</button>
+        <button class="xp-btn" id="empty-recycle-btn">🗑 Empty Recycle Bin</button>
       </div>
       <div class="file-list-header">
         <span>Name</span>
@@ -649,17 +649,17 @@ function openRecycleBin() {
       </div>
       <div style="flex:1;overflow-y:auto;background:white;">
         <div class="file-item" data-file="will_to_work">
-          <span>&#128196; will_to_work.doc</span>
+          <span>📄 will_to_work.doc</span>
           <span>14/04/2003</span>
           <span>4 KB</span>
         </div>
         <div class="file-item" data-file="monday_motivation">
-          <span>&#128202; monday_motivation.ppt</span>
+          <span>📊 monday_motivation.ppt</span>
           <span>03/09/2001</span>
           <span>2 KB</span>
         </div>
         <div class="file-item" data-file="work_life_balance">
-          <span>&#128196; work_life_balance.txt</span>
+          <span>📄 work_life_balance.txt</span>
           <span>Deleted continuously</span>
           <span>1 KB</span>
         </div>
@@ -676,7 +676,7 @@ function openRecycleBin() {
 
   win.querySelector('#empty-recycle-btn').addEventListener('click', emptyRecycleBin);
 
-  registerTaskbar('recycle-window', 'Recycle Bin', '&#9851;');
+  registerTaskbar('recycle-window', 'Recycle Bin', '♻');
 }
 
 function openRecycleFile(file) {
@@ -715,13 +715,13 @@ function openWillToWork() {
   win.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#128196;</div>
+        <div class="titlebar-icon">📄</div>
         <span class="titlebar-text">will_to_work.doc - Notepad</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="will_to_work.doc">&#8722;</button>
-        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">&#9633;</button>
-        <button class="xp-tb-btn xp-tb-close" data-win="${id}">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="will_to_work.doc">−</button>
+        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">□</button>
+        <button class="xp-tb-btn xp-tb-close" data-win="${id}">✕</button>
       </div>
     </div>
     <div class="xp-menubar-np">
@@ -735,7 +735,7 @@ function openWillToWork() {
   `;
   document.getElementById('desktop').appendChild(win);
   makeDraggable(win);
-  registerTaskbar(id, 'will_to_work.doc', '&#128196;');
+  registerTaskbar(id, 'will_to_work.doc', '📄');
 }
 
 function openMondayMotivation() {
@@ -751,13 +751,13 @@ function openMondayMotivation() {
   win.innerHTML = `
     <div class="xp-titlebar active" style="background:linear-gradient(180deg,#c0783c 0%,#a05828 4%,#804018 50%,#6a300a 51%,#804018 100%)">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#128202;</div>
+        <div class="titlebar-icon">📊</div>
         <span class="titlebar-text">Monday_motivation.ppt - Microsoft PowerPoint</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="monday_motivation.ppt" style="background:linear-gradient(180deg,#d09060 0%,#a06030 100%)">&#8722;</button>
-        <button class="xp-tb-btn xp-tb-max" data-win="${id}" style="background:linear-gradient(180deg,#d09060 0%,#a06030 100%)">&#9633;</button>
-        <button class="xp-tb-btn xp-tb-close" data-win="${id}" style="background:linear-gradient(180deg,#e06060 0%,#b02020 100%)">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="monday_motivation.ppt" style="background:linear-gradient(180deg,#d09060 0%,#a06030 100%)">−</button>
+        <button class="xp-tb-btn xp-tb-max" data-win="${id}" style="background:linear-gradient(180deg,#d09060 0%,#a06030 100%)">□</button>
+        <button class="xp-tb-btn xp-tb-close" data-win="${id}" style="background:linear-gradient(180deg,#e06060 0%,#b02020 100%)">✕</button>
       </div>
     </div>
     <div style="background:#d4d0c8;padding:4px 6px;border-bottom:1px solid #a0a0a0;font-size:11px;display:flex;gap:12px;">
@@ -777,7 +777,7 @@ function openMondayMotivation() {
   `;
   document.getElementById('desktop').appendChild(win);
   makeDraggable(win);
-  registerTaskbar(id, 'monday_motivation.ppt', '&#128202;');
+  registerTaskbar(id, 'monday_motivation.ppt', '📊');
 }
 
 function openWorkLifeBalance() {
@@ -797,13 +797,13 @@ function openWorkLifeBalance() {
   win.innerHTML = `
     <div class="xp-titlebar active">
       <div class="xp-titlebar-left">
-        <div class="titlebar-icon">&#128196;</div>
+        <div class="titlebar-icon">📄</div>
         <span class="titlebar-text">work_life_balance.txt - Notepad</span>
       </div>
       <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="work_life_balance.txt">&#8722;</button>
-        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">&#9633;</button>
-        <button class="xp-tb-btn xp-tb-close" data-win="${id}">&#10005;</button>
+        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="work_life_balance.txt">−</button>
+        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">□</button>
+        <button class="xp-tb-btn xp-tb-close" data-win="${id}">✕</button>
       </div>
     </div>
     <div class="xp-menubar-np">
@@ -817,18 +817,18 @@ function openWorkLifeBalance() {
   `;
   document.getElementById('desktop').appendChild(win);
   makeDraggable(win);
-  registerTaskbar(id, 'work_life_balance.txt', '&#128196;');
+  registerTaskbar(id, 'work_life_balance.txt', '📄');
 }
 
 function emptyRecycleBin() {
   showInfoDialog(
     'Confirm File Delete',
-    '&#128465;',
+    '🗑',
     'Are you sure you want to permanently delete the remaining fragments of your enthusiasm?',
     [
       { label: 'Yes', action: d => {
         d.remove();
-        showInfoDialog('Recycle Bin', '&#9989;', 'Recycle Bin emptied. Nothing was lost.', [
+        showInfoDialog('Recycle Bin', '✅', 'Recycle Bin emptied. Nothing was lost.', [
           { label: 'OK', action: d2 => d2.remove() }
         ]);
       }},
@@ -858,8 +858,8 @@ document.addEventListener('DOMContentLoaded', () => {
   makeResizable(document.getElementById('ooo-window'));
 
   // Register taskbar items
-  registerTaskbar('readme-window', 'README.txt', '&#128196;');
-  registerTaskbar('ooo-window', 'OOO Generator', '&#9993;');
+  registerTaskbar('readme-window', 'README.txt', '📄');
+  registerTaskbar('ooo-window', 'Out of Office Generator', '✉');
 
   // Set initial z-index
   bringToFront(document.getElementById('ooo-window'));
