@@ -198,12 +198,10 @@ document.addEventListener('click', e => {
       const win = document.getElementById(winId);
       if (win) {
         win.style.display = 'none';
-        // Remove taskbar item if it's a dynamic window
-        if (!['readme-window','ooo-window'].includes(winId)) {
-          removeTaskbar(winId);
+        removeTaskbar(winId);
+        // readme-window persists in the DOM; dynamic windows are removed entirely
+        if (winId !== 'readme-window') {
           win.remove();
-        } else {
-          if (taskbarItems[winId]) taskbarItems[winId].el.classList.add('minimized');
         }
       }
     }
@@ -603,9 +601,11 @@ function createPrintDialog() {
 /* ===== README WINDOW ===== */
 function openReadme() {
   const win = document.getElementById('readme-window');
-  if (win.style.display === 'none') {
-    win.style.display = 'flex';
-    if (taskbarItems['readme-window']) taskbarItems['readme-window'].el.classList.remove('minimized');
+  win.style.display = 'flex';
+  if (!taskbarItems['readme-window']) {
+    registerTaskbar('readme-window', 'README.txt', '&#128196;');
+  } else {
+    taskbarItems['readme-window'].el.classList.remove('minimized');
   }
   bringToFront(win);
 }
