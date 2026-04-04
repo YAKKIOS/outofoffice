@@ -867,6 +867,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialise slider fill
   updateSliderFill(document.getElementById('drama-slider'));
 
+  // Generate drama slider tick marks
+  const ticksEl = document.querySelector('.slider-ticks');
+  if (ticksEl) {
+    for (let i = 0; i < 10; i++) {
+      const t = document.createElement('span');
+      t.className = 'slider-tick';
+      ticksEl.appendChild(t);
+    }
+  }
+
   // Clock
   updateClock();
   setInterval(updateClock, 60000);

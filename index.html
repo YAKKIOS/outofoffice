@@ -113,8 +113,9 @@
     </div>
 
     <div class="xp-window-body ooo-body" id="ooo-body">
-      <div class="form-section">
 
+      <fieldset class="xp-group-box">
+        <legend>Correspondence details</legend>
         <div class="form-row">
           <label class="xp-label">Away from</label>
           <div class="date-row">
@@ -123,36 +124,38 @@
             <input type="date" class="xp-input date-input" id="date-to">
           </div>
         </div>
-
         <div class="form-row">
           <label class="xp-label">Reason for absence</label>
           <input type="text" class="xp-input" id="reason" placeholder="e.g. Annual leave, hiking, questioning everything">
         </div>
+      </fieldset>
 
-        <div class="form-row">
-          <div class="drama-header-row">
-            <label class="xp-label">Drama level</label>
-            <span class="drama-value-badge" id="drama-value">5</span>
+      <fieldset class="xp-group-box">
+        <legend>Drama level</legend>
+        <div class="drama-row">
+          <span class="drama-end-label">Professional</span>
+          <div class="drama-track-wrap">
+            <input type="range" class="xp-range" id="drama-slider" min="1" max="10" value="5">
+            <div class="slider-ticks"></div>
           </div>
-          <div class="drama-end-labels">
-            <span>Professional</span>
-            <span>Unhinged</span>
-          </div>
-          <input type="range" class="xp-range" id="drama-slider" min="1" max="10" value="5">
+          <span class="drama-end-label">Unhinged</span>
+          <span class="drama-value-badge" id="drama-value">5</span>
         </div>
+      </fieldset>
 
-        <div class="form-btn-row">
-          <button class="xp-btn generate-btn" id="generate-btn">Generate correspondence</button>
-        </div>
-
+      <div class="form-btn-row">
+        <button class="xp-btn generate-btn" id="generate-btn">Generate correspondence</button>
       </div>
 
-      <div class="output-section">
+      <fieldset class="xp-group-box output-group">
+        <legend>Generated correspondence</legend>
         <textarea class="xp-textarea" id="ooo-output" placeholder="Your correspondence will appear here."></textarea>
-        <div class="output-btn-row hidden" id="copy-btn-row">
-          <button class="xp-btn copy-btn" id="copy-btn">Copy</button>
-        </div>
+      </fieldset>
+
+      <div class="output-btn-row hidden" id="copy-btn-row">
+        <button class="xp-btn copy-btn" id="copy-btn">Copy</button>
       </div>
+
     </div>
 
     <div class="xp-resize-handle" id="ooo-resize-handle"></div>
