@@ -389,7 +389,7 @@ html, body {
 /* ===== XP GROUP BOX ===== */
 fieldset.xp-group-box {
   border: 1px solid #aca899;
-  box-shadow: inset 1px 1px 0 #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   padding: 6px 8px 10px;
   margin: 0;
   background: transparent;
@@ -427,7 +427,9 @@ fieldset.xp-group-box.output-group .xp-textarea {
 }
 
 .xp-label {
+  font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
   font-size: 11px;
+  font-weight: normal;
   color: #0057d0;
 }
 
@@ -506,8 +508,8 @@ fieldset.xp-group-box.output-group .xp-textarea {
 .slider-tick {
   display: block;
   width: 1px;
-  height: 4px;
-  background: #909090;
+  height: 3px;
+  background: #808080;
   flex-shrink: 0;
 }
 
@@ -527,26 +529,32 @@ fieldset.xp-group-box.output-group .xp-textarea {
   --fill-pct: 44.4%;
 }
 
-/* Track: hairline, no fill or bevel */
+/* Track: sunken groove — dark top border, light bottom border */
 .xp-range::-webkit-slider-runnable-track {
-  height: 2px;
-  background: #808080;
-  border: none;
+  height: 4px;
+  background: transparent;
+  border-top: 1px solid #909090;
+  border-bottom: 1px solid #ffffff;
+  border-left: none;
+  border-right: none;
   box-shadow: none;
   border-radius: 0;
 }
 
 .xp-range::-moz-range-track {
-  height: 2px;
-  background: #808080;
-  border: none;
+  height: 4px;
+  background: transparent;
+  border-top: 1px solid #909090;
+  border-bottom: 1px solid #ffffff;
+  border-left: none;
+  border-right: none;
   box-shadow: none;
   border-radius: 0;
 }
 
 .xp-range::-moz-range-progress {
   height: 2px;
-  background: #808080;
+  background: transparent;
   border-radius: 0;
 }
 
@@ -601,6 +609,7 @@ fieldset.xp-group-box.output-group .xp-textarea {
 .xp-btn:hover {
   background: linear-gradient(180deg, #f0f8ff 0%, #dceef8 50%, #c8e0f0 100%);
   border-color: #6080a8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
 }
 .xp-btn:active {
   background: linear-gradient(180deg, #d0e4f4 0%, #c8dcea 100%);
