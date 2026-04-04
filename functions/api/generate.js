@@ -25,6 +25,8 @@ Drama level 1-3: the character is subtle, mostly professional with slight undert
 
 Never reveal which archetype you selected. Never use the person's name. Keep replies between 3-6 sentences. Make each reply feel genuinely different from the last. The reply should be funny but plausible enough that someone might actually consider sending it.
 
+Keep all replies to 3-5 sentences maximum regardless of drama level. Brevity is funnier. The character should be fully expressed in those sentences, not exhaustively elaborated. Do not write long paragraphs.
+
 Return only the out of office reply text, nothing else.`;
 
 export async function onRequestPost(context) {
@@ -65,7 +67,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
+        max_tokens: 200,
         system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: userMessage }],
       }),
