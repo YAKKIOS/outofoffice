@@ -191,7 +191,7 @@ document.addEventListener('click', e => {
 
   if (btn.classList.contains('xp-tb-close')) {
     if (action === 'ooo-close') {
-      showErrorDialog('Out of Office Generator', '❌ Cannot close. You are still employed.');
+      showErrorDialog('Out of Office Generator', 'Cannot close. You are still employed.');
       return;
     }
     if (winId) {

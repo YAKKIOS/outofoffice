@@ -581,46 +581,40 @@ fieldset.xp-group-box.output-group .xp-textarea {
 /* ===== XP BUTTONS ===== */
 .xp-btn {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
   font-size: 11px;
   cursor: pointer;
-  padding: 3px 12px;
-  background: linear-gradient(180deg, #ffffff 0%, #ece9d8 100%);
+  padding: 4px 14px;
+  min-width: 75px;
+  background: linear-gradient(180deg, #ffffff 0%, #ece9d8 50%, #dbd8c8 100%);
   border: 1px solid #7f9db9;
-  box-shadow: none;
   border-radius: 3px;
   color: #000000;
-  outline: none;
-  min-width: 75px;
   text-align: center;
-  vertical-align: middle;
   line-height: 1.4;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9),
+              inset 0 -1px 0 rgba(0,0,0,0.05),
+              0 1px 2px rgba(0,0,0,0.15);
+  outline: none;
 }
-
 .xp-btn:hover {
-  background: linear-gradient(180deg, #ffffff 0%, #dce8f8 100%);
+  background: linear-gradient(180deg, #f0f8ff 0%, #dceef8 50%, #c8e0f0 100%);
   border-color: #6080a8;
 }
-
 .xp-btn:active {
-  background: linear-gradient(180deg, #dce8f4 0%, #c8d8ec 100%);
+  background: linear-gradient(180deg, #d0e4f4 0%, #c8dcea 100%);
   border-color: #507090;
-  padding-top: 4px;
-  padding-left: 13px;
-  padding-bottom: 2px;
-  padding-right: 11px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  padding-top: 5px;
+  padding-bottom: 3px;
 }
-
 .xp-btn:focus-visible {
   outline: 1px dotted #000000;
   outline-offset: -4px;
 }
-
 .generate-btn {
   width: 160px;
-  padding: 4px 12px;
 }
 
 /* ===== TEXTAREA ===== */
@@ -638,8 +632,7 @@ fieldset.xp-group-box.output-group .xp-textarea {
   color: #000;
   width: 100%;
   user-select: text;
-  border-radius: 0;
-  box-sizing: border-box;
+  line-height: 150%;
 }
 
 .xp-textarea::placeholder {
