@@ -29,6 +29,8 @@ Keep all replies to 3-5 sentences maximum regardless of drama level. Brevity is 
 
 Never start the reply with Thank you for your email or any variation of it. Never start two replies the same way. Each archetype should have a distinctly different opening that immediately establishes the character voice — the Victorian aristocrat might open with an address, the medieval herald with a proclamation, the lawyer with a clause reference, the wellness influencer with a question. The opening line is the punchline setup, make it count.
 
+Do not use asterisks anywhere in the reply. Do not add a title, heading, or standalone opening line separated from the rest of the text. The reply should be a single continuous piece of text with no formatting marks, no asterisks, no bold, no italics, no markdown of any kind. Just plain prose sentences.
+
 Return only the out of office reply text, nothing else.`;
 
 export async function onRequestPost(context) {
