@@ -1091,3 +1091,39 @@ fieldset.xp-group-box.output-group .xp-textarea {
 
 /* ===== TASKBAR Z-INDEX ===== */
 #taskbar, #start-menu { z-index: 10000; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  /* Cap all windows to viewport width */
+  .xp-window {
+    max-width: calc(100vw - 16px) !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* OOO window: pin to top, fill available height above taskbar */
+  #ooo-window {
+    left: 8px !important;
+    top: 8px !important;
+    width: calc(100vw - 16px) !important;
+    height: calc(100vh - 52px) !important;
+  }
+
+  /* README window: pin top-left when open */
+  #readme-window {
+    left: 8px !important;
+    top: 8px !important;
+    width: calc(100vw - 16px) !important;
+  }
+
+  /* Date row: allow inputs to wrap if truly necessary */
+  .date-row {
+    flex-wrap: wrap;
+  }
+
+  /* Truncate long taskbar labels */
+  .taskbar-item {
+    max-width: 140px;
+    font-size: 10px;
+  }
+}
