@@ -324,6 +324,9 @@ dramaSlider.addEventListener('input', function() {
 /* ===== GENERATE OOO ===== */
 document.getElementById('generate-btn').addEventListener('click', generateOOO);
 
+const recentArchetypes = [];
+const RECENT_ARCHETYPES_MAX = 5;
+
 async function generateOOO() {
   const fromDate = document.getElementById('date-from').value;
   const toDate = document.getElementById('date-to').value;
@@ -345,7 +348,7 @@ async function generateOOO() {
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fromDate, toDate, reason, dramaLevel: drama })
+      body: JSON.stringify({ fromDate, toDate, reason, dramaLevel: drama, recentArchetypes })
     });
 
     if (!response.ok) throw new Error('Server error: ' + response.status);
@@ -360,6 +363,11 @@ async function generateOOO() {
       ta.value = data.text;
       ta.style.fontStyle = 'normal';
       document.getElementById('copy-btn-row').classList.remove('hidden');
+
+      if (typeof data.archetypeIndex === 'number') {
+        recentArchetypes.push(data.archetypeIndex);
+        if (recentArchetypes.length > RECENT_ARCHETYPES_MAX) recentArchetypes.shift();
+      }
     } else if (data.error) {
       throw new Error(data.error);
     }
