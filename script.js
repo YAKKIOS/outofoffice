@@ -324,6 +324,9 @@ dramaSlider.addEventListener('input', function() {
 /* ===== GENERATE OOO ===== */
 document.getElementById('generate-btn').addEventListener('click', generateOOO);
 
+const recentArchetypes = [];
+const RECENT_ARCHETYPES_MAX = 5;
+
 async function generateOOO() {
   const fromDate = document.getElementById('date-from').value;
   const toDate = document.getElementById('date-to').value;
@@ -345,7 +348,7 @@ async function generateOOO() {
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fromDate, toDate, reason, dramaLevel: drama })
+      body: JSON.stringify({ fromDate, toDate, reason, dramaLevel: drama, recentArchetypes })
     });
 
     if (!response.ok) throw new Error('Server error: ' + response.status);
@@ -360,6 +363,11 @@ async function generateOOO() {
       ta.value = data.text;
       ta.style.fontStyle = 'normal';
       document.getElementById('copy-btn-row').classList.remove('hidden');
+
+      if (typeof data.archetypeIndex === 'number') {
+        recentArchetypes.push(data.archetypeIndex);
+        if (recentArchetypes.length > RECENT_ARCHETYPES_MAX) recentArchetypes.shift();
+      }
     } else if (data.error) {
       throw new Error(data.error);
     }
@@ -648,11 +656,6 @@ function openRecycleBin() {
         <span>Size</span>
       </div>
       <div style="flex:1;overflow-y:auto;background:white;">
-        <div class="file-item" data-file="will_to_work">
-          <span>📄 will_to_work.doc</span>
-          <span>14/04/2003</span>
-          <span>4 KB</span>
-        </div>
         <div class="file-item" data-file="monday_motivation">
           <span>📊 monday_motivation.ppt</span>
           <span>03/09/2001</span>
@@ -680,62 +683,8 @@ function openRecycleBin() {
 }
 
 function openRecycleFile(file) {
-  if (file === 'will_to_work') openWillToWork();
-  else if (file === 'monday_motivation') openMondayMotivation();
+  if (file === 'monday_motivation') openMondayMotivation();
   else if (file === 'work_life_balance') openWorkLifeBalance();
-}
-
-function openWillToWork() {
-  const id = 'will-to-work-window';
-  let win = document.getElementById(id);
-  if (win) { win.style.display = 'flex'; bringToFront(win); return; }
-
-  const pos = centeredPos(420, 340);
-  win = document.createElement('div');
-  win.className = 'xp-window';
-  win.id = id;
-  win.style.cssText = `left:${pos.left}px;top:${pos.top}px;width:420px;height:340px;z-index:${++zTop}`;
-
-  const ascii = `
-       O
-      /|\\    zZzZz...
-      / \\
-
-  ________________
- |                |
- |   [ laptop ]   |
- |   ____________ |
- |  |            ||
- |  |____________||
- |________________|
-
-
-  Final draft. Never submitted.`.trim();
-
-  win.innerHTML = `
-    <div class="xp-titlebar active">
-      <div class="xp-titlebar-left">
-        <div class="titlebar-icon">📄</div>
-        <span class="titlebar-text">will_to_work.doc - Notepad</span>
-      </div>
-      <div class="xp-titlebar-btns">
-        <button class="xp-tb-btn xp-tb-min" data-win="${id}" data-label="will_to_work.doc">−</button>
-        <button class="xp-tb-btn xp-tb-max xp-tb-disabled">□</button>
-        <button class="xp-tb-btn xp-tb-close" data-win="${id}">✕</button>
-      </div>
-    </div>
-    <div class="xp-menubar-np">
-      <span class="np-menu-item">File</span>
-      <span class="np-menu-item">Edit</span>
-      <span class="np-menu-item">Format</span>
-    </div>
-    <div class="xp-window-body notepad-body" style="flex:1;">
-      <pre class="notepad-pre" style="user-select:text">${ascii}</pre>
-    </div>
-  `;
-  document.getElementById('desktop').appendChild(win);
-  makeDraggable(win);
-  registerTaskbar(id, 'will_to_work.doc', '📄');
 }
 
 function openMondayMotivation() {
@@ -768,8 +717,7 @@ function openMondayMotivation() {
     <div class="xp-window-body ppt-window-body" style="flex:1;position:relative">
       <div class="ppt-slide">
         <div style="text-align:center">
-          <div style="font-size:14px;color:#888;margin-bottom:16px">Monday Motivation.ppt</div>
-          <div style="font-size:72px;font-weight:bold;color:#c00000">No.</div>
+          <div style="font-size:48px;font-weight:bold;color:#e8a200">GETTING THERE! ☀️</div>
         </div>
       </div>
       <div class="ppt-slide-no">Slide 1 of 1</div>
@@ -792,7 +740,7 @@ function openWorkLifeBalance() {
   win.style.cssText = `left:${pos.left}px;top:${pos.top}px;width:380px;height:340px;z-index:${++zTop}`;
 
   const blanks = '\n'.repeat(47);
-  const content = `TODO: achieve this${blanks}TODO: achieve this`;
+  const content = `TODO: achieve this${blanks}(see above)`;
 
   win.innerHTML = `
     <div class="xp-titlebar active">
